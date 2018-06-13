@@ -22,9 +22,12 @@ public class Engine {
 	}
 
 	private void criaLabirinto() {
+		Sala salaBlackHole = new SalaBlackHole();
 		Sala hallEntrada = new HallEntrada();
 		Sala salaCofre = new SalaCofre();
 		Sala salaPedras = new SalaPedras();
+		
+//		salaBlackHole.getPortas().put(salaSaturno.getNome(), salaSaturno)
 
 		hallEntrada.getPortas().put(salaCofre.getNome(), salaCofre);
 
@@ -32,7 +35,7 @@ public class Engine {
 		salaCofre.getPortas().put(salaPedras.getNome(), salaPedras);
 
 		salaPedras.getPortas().put(salaCofre.getNome(), salaCofre);
-		salaInicial = hallEntrada;
+		salaInicial = salaBlackHole;
 
 	}
 
@@ -51,7 +54,7 @@ public class Engine {
 				if (salaCorrente.pega(tokens[1])) {
 					System.out.println("Ok! " + tokens[1] + " na mochila!");
 				} else {
-					System.out.println("Objeto " + tokens[1] + " nÃ£o encontrado.");
+					System.out.println("Objeto " + tokens[1] + " não encontrado.");
 				}
 				break;
 			case "inventario":
@@ -62,7 +65,7 @@ public class Engine {
 					if (salaCorrente.usa(tokens[1])) {
 						System.out.println("Feito !!");
 					} else {
-						System.out.println("NÃ£o Ã© possÃ­vel usar " + tokens[1] + " nesta sala");
+						System.out.println("Não é possível usar " + tokens[1] + " nesta sala");
 					}
 				} catch (FimDeJogoException e) {
 					fim = true;
@@ -82,7 +85,7 @@ public class Engine {
 				break;
 			}
 		}
-		System.out.println("Fim de jogo !! VocÃª conseguiu abrir o cofre !!");
+		System.out.println("Fim de jogo !! Você conseguiu abrir o cofre !!");
 	}
 
 }

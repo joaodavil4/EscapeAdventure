@@ -2,31 +2,38 @@ package JogoDemo;
 
 import ClassesBasicas.Ferramenta;
 import ClassesBasicas.Sala;
-import JogoDemo.Ferramentas.Chave;
+import JogoDemo.Ferramentas.Oculos;
 import JogoDemo.Ferramentas.Lanterna;
-import JogoDemo.Ferramentas.Picareta;
-import JogoDemo.Objetos.Cofre;
+import JogoDemo.Ferramentas.Pilhas;
+import JogoDemo.Objetos.GPS;
+import JogoDemo.Objetos.GuiaMochileiro;
 
-public class SalaCofre extends SalaJogoDemo {
+public class SalaBlackHole extends SalaJogoDemo {
     private boolean escuro;
     
-	public SalaCofre() {
-		super("SalaCofre");
+	public SalaBlackHole() {
+		super("SalaBlackHole");
 	    escuro = true;
-		Cofre cofre = new Cofre();
-		Picareta picareta = new Picareta();
-		this.getObjetos().put("Cofre", cofre);
-		this.getFerramentas().put(picareta.getDescricao(), picareta);
+	    //OBJETOS
+		GPS gps = new GPS();
+		GuiaMochileiro livro = new GuiaMochileiro();
+		this.getObjetos().put("GPS", gps);
+		this.getObjetos().put("GuiaMochileiro", livro);
+		//FERRAMENTAS
+		Oculos oculos = new Oculos();
+		Pilhas pilhas = new Pilhas();
+		this.getFerramentas().put(oculos.getDescricao(), oculos);
+		this.getFerramentas().put(pilhas.getDescricao(), pilhas);
 	}
 
 	@Override
 	public String textoDescricao() {
 		StringBuilder descricao = new StringBuilder();
-		descricao.append("Você está na ").append(this.getNome()).append("\n");
+		descricao.append("Voce esta na ").append(this.getNome()).append("\n");
 		if (escuro) {
-			descricao.append("Esta escuro aqui ...");
+			descricao.append("Está escuro aqui ...");
 		}else {
-		    descricao.append("Parece uma sala comum.\n");
+		    descricao.append("A luz incendeia no buraco e você consegue enxergar\n");
 		    descricao.append("Objetos: ").append(this.objetosDisponiveis().toString()).append("\n");
 		    descricao.append("Ferramentas: ").append(this.ferramentasDisponiveis().toString()).append("\n");
 		}
@@ -44,10 +51,10 @@ public class SalaCofre extends SalaJogoDemo {
 		    escuro = false;
 		    return true;
 		}
-		if (f instanceof Chave && escuro == false) {
-			((Cofre)(this.getObjetos().get("Cofre"))).setAcaoOk(true);
-			throw new FimDeJogoException();
-		}
+//		if (f instanceof escuro == false) {
+//			(()(this.getObjetos().get("Cofre"))).setAcaoOk(true);
+//			throw new FimDeJogoException();
+//		}
 		return false;
 	}	
 	
