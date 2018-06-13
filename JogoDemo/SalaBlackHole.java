@@ -12,7 +12,7 @@ public class SalaBlackHole extends SalaJogoDemo {
     private boolean escuro;
     
 	public SalaBlackHole() {
-		super("Sala Black-Hole");
+		super("Buraco Negro");
 	    escuro = true;
 	    //OBJETOS
 		GPS gps = new GPS();
@@ -20,24 +20,26 @@ public class SalaBlackHole extends SalaJogoDemo {
 		this.getObjetos().put("GPS", gps);
 		this.getObjetos().put("GuiaMochileiro", livro);
 		//FERRAMENTAS
+		Lanterna lanterna = new Lanterna ();
 		Oculos oculos = new Oculos();
 		Pilhas pilhas = new Pilhas();
 		this.getFerramentas().put(oculos.getDescricao(), oculos);
 		this.getFerramentas().put(pilhas.getDescricao(), pilhas);
+		this.getFerramentas().put(lanterna.getDescricao(), lanterna);
 	}
 
 	@Override
 	public String textoDescricao() {
 		StringBuilder descricao = new StringBuilder();
-		descricao.append("Voce esta na ").append(this.getNome()).append("\n");
+		descricao.append("Voce foi enviado para Marte bla bla bla.... e esta no ").append(this.getNome()).append("\n");
 		if (escuro) {
 			descricao.append("Está escuro aqui ...");
 		}else {
-		    descricao.append("A luz incendeia no buraco e você consegue enxergar\n");
+		    descricao.append("A lanterna iluminou o buraco e você consegue enxergar\n");
 		    descricao.append("Objetos: ").append(this.objetosDisponiveis().toString()).append("\n");
 		    descricao.append("Ferramentas: ").append(this.ferramentasDisponiveis().toString()).append("\n");
 		}
-		descricao.append("Portas: ").append(this.portasDisponiveis().toString()).append("\n");
+		descricao.append("Opcoes: ").append(this.portasDisponiveis().toString()).append("\n");
 		return descricao.toString();
 	}
 
@@ -49,12 +51,14 @@ public class SalaBlackHole extends SalaJogoDemo {
 		}
 		if (f instanceof Lanterna) {
 		    escuro = false;
+		    //usou a lanterna e aparecem os objetos disponiveis
 		    return true;
 		}
-//		if (f instanceof escuro == false) {
-//			(()(this.getObjetos().get("Cofre"))).setAcaoOk(true);
-//			throw new FimDeJogoException();
-//		}
+		if (escuro == false) {
+			
+		//(()(this.getObjetos().get("Cofre"))).setAcaoOk(true);
+		throw new FimDeJogoException();
+	}
 		return false;
 	}	
 	
