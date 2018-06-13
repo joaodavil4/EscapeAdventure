@@ -5,7 +5,7 @@ import ClassesBasicas.Ferramenta;
 public class Oculos extends Ferramenta{
 	
 	public Oculos(){
-		super("Oculus Transition Multi-Focal 3D");
+		super("Oculos Transition Multi-Focal 3D");
 	}
 
 }

@@ -12,7 +12,7 @@ public class SalaBlackHole extends SalaJogoDemo {
     private boolean escuro;
     
 	public SalaBlackHole() {
-		super("SalaBlackHole");
+		super("Sala Black-Hole");
 	    escuro = true;
 	    //OBJETOS
 		GPS gps = new GPS();
