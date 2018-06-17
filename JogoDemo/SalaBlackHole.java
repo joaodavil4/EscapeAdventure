@@ -31,7 +31,7 @@ public class SalaBlackHole extends SalaJogoDemo {
 	@Override
 	public String textoDescricao() {
 		StringBuilder descricao = new StringBuilder();
-		descricao.append("Voce foi enviado para Marte bla bla bla.... e esta no ").append(this.getNome()).append("\n");
+		descricao.append("Voce foi enviado para realizar uma missão em Marte, mas sua nave passou por uma tempestade e agora você está ").append(this.getNome()).append("\n");
 		if (escuro) {
 			descricao.append("Está escuro aqui ...");
 		}else {
