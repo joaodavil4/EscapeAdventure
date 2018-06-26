@@ -23,12 +23,14 @@ public class Engine {
 
 	private void criaLabirinto() {
 		Sala salaBlackHole = new SalaBlackHole();
+		Sala salaSaturno = new SalaSaturno();
 		Sala hallEntrada = new HallEntrada();
 		Sala salaCofre = new SalaCofre();
 		Sala salaPedras = new SalaPedras();
+		Sala salaBuraco = new SalaBlackHole();
 		
-//		salaBlackHole.getPortas().put(salaSaturno.getNome(), salaSaturno)
-
+		salaBlackHole.getPortas().put(salaSaturno.getNome(), salaSaturno);
+		
 		hallEntrada.getPortas().put(salaCofre.getNome(), salaCofre);
 
 		salaCofre.getPortas().put(hallEntrada.getNome(), hallEntrada);
@@ -41,6 +43,9 @@ public class Engine {
 
 	public void joga() {
 		while (!fim) {
+			Sala novaSala = salaCorrente;
+			novaSala.entra(mochila);
+			
 			System.out.println("---------");
 			System.out.println(salaCorrente.textoDescricao());
 			System.out.println("O que voce deseja fazer? ");
@@ -71,15 +76,15 @@ public class Engine {
 					fim = true;
 				}
 				break;
-			case "sai":
-				Sala novaSala = salaCorrente.sai(tokens[1]);
-				if (novaSala == null) {
-					System.out.println("Sala desconhecida ...");
-				} else {
-					novaSala.entra(mochila);
-					salaCorrente = novaSala;
-				}
-				break;
+//			case "sai":
+//				Sala novaSala = salaCorrente.sai(tokens[1]);
+//				if (novaSala == null) {
+//					System.out.println("Sala desconhecida ...");
+//				} else {
+//					novaSala.entra(mochila);
+//					salaCorrente = novaSala;
+//				}
+//				break;
 			default:
 				System.out.println("Comando desconhecido: " + tokens[0]);
 				break;

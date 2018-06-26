@@ -1,5 +1,7 @@
 package JogoDemo;
 
+import java.util.Map;
+
 import ClassesBasicas.Ferramenta;
 import ClassesBasicas.Sala;
 import JogoDemo.Ferramentas.Oculos;
@@ -54,13 +56,25 @@ public class SalaBlackHole extends SalaJogoDemo {
 		    //usou a lanterna e aparecem os objetos disponiveis
 		    return true;
 		}
-		if (escuro == false) {
+		if (f instanceof Oculos) {
+			return true;
+		}
+		if (f instanceof Pilhas) {
+			return true;
+		}
+		if (!escuro) {
 			
 		//(()(this.getObjetos().get("Cofre"))).setAcaoOk(true);
 		throw new FimDeJogoException();
 	}
 		return false;
 	}	
+	
+	public void trocaSala() {
+		if (!escuro) {
+			this.getPortas();
+		}
+	}
 	
 	@Override
 	public Sala sai(String sala) {

@@ -12,15 +12,15 @@ public class CelaSubterranea extends SalaJogoDemo {
 	public CelaSubterranea() {
 		super("Cela Subterranea");
 		livre=false;
+		//REMOVE OBJETOS
+		//this.getMochila().removeAll;
 		//OBJETOS
 		Cadeado cadeado = new Cadeado();
 		this.getObjetos().put("Cadeado", cadeado);
 		//FERRAMENTAS
 		Bilhete bilhete = new Bilhete();
-		Garrafa garrafa = new Garrafa();
 		Escada escada = new Escada();
 		this.getFerramentas().put(bilhete.getDescricao(), bilhete);
-		this.getFerramentas().put(garrafa.getDescricao(), garrafa);
 		this.getFerramentas().put(escada.getDescricao(), escada);
 	}
 	
@@ -50,6 +50,7 @@ public class CelaSubterranea extends SalaJogoDemo {
 		if (f instanceof Bilhete && livre)
 		{
 			return true;
+			//TROCAR DE SALA
 		}
 		return false;
 	}
