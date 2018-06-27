@@ -6,7 +6,7 @@ import JogoDemo.Ferramentas.Lanterna;
 public class HallEntrada extends SalaJogoDemo {
 
 	public HallEntrada() {
-		super("HallEntrada");
+		super("HallEntrada", "0");
 		Lanterna lanterna = new Lanterna();
 		Dinamite dinamite = new Dinamite();
 		this.getFerramentas().put(lanterna.getDescricao(),lanterna);

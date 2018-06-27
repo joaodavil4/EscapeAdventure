@@ -4,8 +4,8 @@ import ClassesBasicas.Sala;
 
 public abstract class SalaJogoDemo extends Sala {
 
-	public SalaJogoDemo(String nome) {
-		super(nome);
+	public SalaJogoDemo(String nome, String repVis) {
+		super(nome, repVis);
 	}
 
 	@Override

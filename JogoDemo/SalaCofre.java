@@ -11,7 +11,7 @@ public class SalaCofre extends SalaJogoDemo {
     private boolean escuro;
     
 	public SalaCofre() {
-		super("SalaCofre");
+		super("SalaCofre", "0");
 	    escuro = true;
 		Cofre cofre = new Cofre();
 		Picareta picareta = new Picareta();

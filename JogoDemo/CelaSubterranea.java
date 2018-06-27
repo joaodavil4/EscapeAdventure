@@ -10,7 +10,7 @@ public class CelaSubterranea extends SalaJogoDemo {
 	private boolean livre;
 	
 	public CelaSubterranea() {
-		super("Cela Subterranea");
+		super("Cela Subterranea", "5");
 		livre=false;
 		//REMOVE OBJETOS
 		//this.getMochila().removeAll;

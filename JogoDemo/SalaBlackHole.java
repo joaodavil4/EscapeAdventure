@@ -12,9 +12,10 @@ import JogoDemo.Objetos.GuiaMochileiro;
 
 public class SalaBlackHole extends SalaJogoDemo {
     private boolean escuro;
+    private StageScene stage;
     
 	public SalaBlackHole() {
-		super("Buraco Negro");
+		super("Buraco Negro", "0");
 	    escuro = true;
 	    //OBJETOS
 		GPS gps = new GPS();
@@ -28,6 +29,11 @@ public class SalaBlackHole extends SalaJogoDemo {
 		this.getFerramentas().put(oculos.getDescricao(), oculos);
 		this.getFerramentas().put(pilhas.getDescricao(), pilhas);
 		this.getFerramentas().put(lanterna.getDescricao(), lanterna);
+		
+		//dá certo isso aqui? queria trocar a imagem quando liga a luz
+		if(escuro=false) {
+			stage.setImagem(1);
+		}
 	}
 
 	@Override
@@ -37,6 +43,7 @@ public class SalaBlackHole extends SalaJogoDemo {
 		if (escuro) {
 			descricao.append("Está escuro aqui ...");
 		}else {
+			
 		    descricao.append("A lanterna iluminou o buraco e você consegue enxergar\n");
 		    descricao.append("Objetos: ").append(this.objetosDisponiveis().toString()).append("\n");
 		    descricao.append("Ferramentas: ").append(this.ferramentasDisponiveis().toString()).append("\n");

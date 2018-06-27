@@ -9,7 +9,7 @@ public class SalaGuardas extends SalaJogoDemo {
 	private boolean bebado;
 	
 	public SalaGuardas() {
-		super("Sala de Guardas");
+		super("Sala de Guardas", "6");
 		bebado = false;
 		//OBJETOS
 		CaixaFerramentas caixa = new CaixaFerramentas();

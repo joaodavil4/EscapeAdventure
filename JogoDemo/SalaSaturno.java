@@ -9,7 +9,7 @@ public class SalaSaturno extends SalaJogoDemo {
 	private boolean combustivel;
 	
 	public SalaSaturno() {
-		super("Planeta Saturno!");
+		super("Planeta Saturno!", "2");
 		combustivel=false;
 		//OBJETOS
 		Galao combustivel = new Galao();
