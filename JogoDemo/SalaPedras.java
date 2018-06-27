@@ -3,7 +3,7 @@ package JogoDemo;
 import ClassesBasicas.Ferramenta;
 import ClassesBasicas.Sala;
 import JogoDemo.Ferramentas.Chave;
-import JogoDemo.Ferramentas.Lanterna;
+import JogoDemo.Ferramentas.Luminaria;
 import JogoDemo.Ferramentas.Picareta;
 import JogoDemo.Objetos.Cofre;
 import JogoDemo.Objetos.PilhaPedras;

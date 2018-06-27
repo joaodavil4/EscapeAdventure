@@ -7,7 +7,7 @@ import ClassesBasicas.Sala;
 
 public class Engine {
 	private StageScene palco;
-	private Scanner sc;
+	//private Scanner sc;
 	private Sala salaInicial;
 	private Mochila mochila;
 	private Sala salaCorrente;
@@ -15,7 +15,7 @@ public class Engine {
 
 	public Engine(StageScene palco) {
 		this.palco = palco;
-		sc = new Scanner(System.in);
+		//sc = new Scanner(System.in);
 		mochila = new Mochila();
 		criaLabirinto();
 		salaInicial.entra(mochila);
@@ -48,43 +48,45 @@ public class Engine {
 
 	}
 
-	public void joga() { //não vai a acao como parametro?
-		while (!fim) {
-			Sala novaSala = salaCorrente;
-			novaSala.entra(mochila);
+	public void joga(String acao) {
+		if (!fim) {
+			salaCorrente.entra(mochila);
 			
 			palco.setImagem(Integer.parseInt(salaCorrente.getRepVisual()));
-			palco.exibeTexto("\n" + salaCorrente.textoDescricao() + "\n" + "O que voce deseja fazer? \n");
+			palco.exibeTexto("\n" + salaCorrente.textoDescricao() + "Suas opções: \n fim - sair do jogo.\n pegar - colocar uma ferramenta na mochila"
+							+ "\n inventário - o que você já tem na mochila \n usar - usar uma ferramenta ");
 //			System.out.println(salaCorrente.textoDescricao());
 //			System.out.println("O que voce deseja fazer? ");
-			String acao = sc.nextLine();
+	//acao = sc.nextLine();
 			String[] tokens = acao.split(" ");
+			
 			switch (tokens[0]) {
 			case "fim":
 				fim = true;
 				break;
-			case "pega":
+			
+			case "pegar":
 				if (salaCorrente.pega(tokens[1])) {
-					System.out.println("Ok! " + tokens[1] + " na mochila!");
-				} else {
-					System.out.println("Objeto " + tokens[1] + " não encontrado.");
-				}
-				break;
+					System.out.println("Ok! " + tokens[1] + " na mochila.");
+					}else {
+					System.out.println("Ferramenta " + tokens[1] + " não encontrada.");
+					}
+					break;
+			
 			case "inventario":
 				System.out.println("Conteudo da mochila: " + mochila.inventario());
 				break;
-			case "usa":
-				try {
-					if (salaCorrente.usa(tokens[1])) {
-						System.out.println("Feito !!");
-					} else {
-						System.out.println("Não é possível usar " + tokens[1] + " nesta sala");
-					}
-				} catch (FimDeJogoException e) {
-					fim = true;
+			
+			case "usar":
+				if (salaCorrente.usa(tokens[1])) {
+					System.out.println("Feito!");
+					salaCorrente.sai("porta"); //o que vai nesse parametro? ele sai da sala depois que usa as ferramentas certas no objetos certos?
+				} else {
+					System.out.println("Não é possível usar " + tokens[1] + " nesta sala");
 				}
 				break;
-//			case "sai":
+				
+//			case "sair_da_sala":
 //				Sala novaSala = salaCorrente.sai(tokens[1]);
 //				if (novaSala == null) {
 //					System.out.println("Sala desconhecida ...");
@@ -93,12 +95,18 @@ public class Engine {
 //					salaCorrente = novaSala;
 //				}
 //				break;
+				
 			default:
 				System.out.println("Comando desconhecido: " + tokens[0]);
 				break;
 			}
 		}
-		System.out.println("Fim de jogo !! Você conseguiu abrir o cofre !!");
+		if (fim) {
+			//comando para encerrar o jogo de verdade verdadeira???
+			System.out.println("Adeus, astronauta!");
+		} else System.out.println("Próxima jogada...");
+		
+		
 	}
-
+	
 }

@@ -1,13 +1,13 @@
 package JogoDemo;
 
 import JogoDemo.Ferramentas.Dinamite;
-import JogoDemo.Ferramentas.Lanterna;
+import JogoDemo.Ferramentas.Luminaria;
 
 public class HallEntrada extends SalaJogoDemo {
 
 	public HallEntrada() {
 		super("HallEntrada", "0");
-		Lanterna lanterna = new Lanterna();
+		Luminaria lanterna = new Luminaria();
 		Dinamite dinamite = new Dinamite();
 		this.getFerramentas().put(lanterna.getDescricao(),lanterna);
 		this.getFerramentas().put(dinamite.getDescricao(),dinamite);

@@ -76,7 +76,7 @@ public class StageScene extends Application { //O MAIN TA NO FINAL DA CLASSE
 		comando = new TextField();
 		hbBtn.getChildren().add(comando);
 		Button btOk = new Button("Ok");
-		btOk.setOnAction(e -> engine.joga());//tirei comando.getText())
+		btOk.setOnAction(e -> engine.joga(comando.getText()));
 		hbBtn.getChildren().add(btOk);
 		gp.add(hbBtn, 0, 2);
 
@@ -87,7 +87,7 @@ public class StageScene extends Application { //O MAIN TA NO FINAL DA CLASSE
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		
-		engine.joga(); //tirei "start"
+		engine.joga("start");
 	}
 	
     public void exibeTexto(String texto) {
