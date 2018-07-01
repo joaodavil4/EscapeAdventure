@@ -7,8 +7,8 @@ import JogoDemo.Ferramentas.Oculos;
 public class GuiaMochileiro extends Objeto {
 
 	public GuiaMochileiro() {
-		super("As letras estão estranhas, parece outro idioma",
-			  "O livro descreve instruções de uma missão a ser seguida, e o próximo passo é seguir para o Planeta Saturno!");
+		super("Guia do Mochileiro, Edição 1.5 - As letras estão estranhas, parece outro idioma \n",
+			  "O guia descreve instruções de uma missão a ser seguida, e o próximo passo é seguir para o Planeta Saturno!");
 	}
 
 	@Override

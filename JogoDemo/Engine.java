@@ -4,10 +4,11 @@ import java.util.Scanner;
 
 import ClassesBasicas.Mochila;
 import ClassesBasicas.Sala;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Engine {
 	private StageScene palco;
-	//private Scanner sc;
 	private Sala salaInicial;
 	private Mochila mochila;
 	private Sala salaCorrente;
@@ -15,7 +16,6 @@ public class Engine {
 
 	public Engine(StageScene palco) {
 		this.palco = palco;
-		//sc = new Scanner(System.in);
 		mochila = new Mochila();
 		criaLabirinto();
 		salaInicial.entra(mochila);
@@ -29,11 +29,6 @@ public class Engine {
 		Sala celaSubterranea = new CelaSubterranea();
 		Sala salaGuardas = new SalaGuardas();
 		Sala salaMarte = new SalaMarte();
-		
-//		Sala hallEntrada = new HallEntrada();
-//		Sala salaCofre = new SalaCofre();
-//		Sala salaPedras = new SalaPedras();
-//		Sala salaBuraco = new SalaBlackHole();
 	
 		salaBlackHole.getPortas().put(salaSaturno.getNome(), salaSaturno);
 		salaSaturno.getPortas().put(celaSubterranea.getNome(), celaSubterranea);
@@ -85,16 +80,21 @@ public class Engine {
 					System.out.println("Não é possível usar " + tokens[1] + " nesta sala");
 				}
 				break;
-				
-//			case "sair_da_sala":
-//				Sala novaSala = salaCorrente.sai(tokens[1]);
-//				if (novaSala == null) {
-//					System.out.println("Sala desconhecida ...");
-//				} else {
-//					novaSala.entra(mochila);
-//					salaCorrente = novaSala;
-//				}
-//				break;
+			case "sai":
+				Sala novaSala = salaCorrente.sai(tokens[1]);
+				if (novaSala == null) {
+					System.out.println("Sala desconhecida ...");
+				} else {
+					novaSala.entra(mochila);
+					salaCorrente = novaSala;
+				}
+				break;
+			case "fechar":
+				//CÓDIGO PARA SAIR DO JOGO
+				fim = true;
+			
+			case "start":
+				//CÓDIGO PARA INICIAR O JOGO
 				
 			default:
 				System.out.println("Comando desconhecido: " + tokens[0]);
@@ -102,8 +102,10 @@ public class Engine {
 			}
 		}
 		if (fim) {
-			//comando para encerrar o jogo de verdade verdadeira???
-			System.out.println("Adeus, astronauta!");
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Adeus Astronauta!");
+			alert.setContentText("Adeus Astronauta");
+			alert.showAndWait();
 		} else System.out.println("Próxima jogada...");
 		
 		
