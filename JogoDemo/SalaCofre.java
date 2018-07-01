@@ -3,7 +3,7 @@ package JogoDemo;
 import ClassesBasicas.Ferramenta;
 import ClassesBasicas.Sala;
 import JogoDemo.Ferramentas.Chave;
-import JogoDemo.Ferramentas.Lanterna;
+import JogoDemo.Ferramentas.Luminaria;
 import JogoDemo.Ferramentas.Picareta;
 import JogoDemo.Objetos.Cofre;
 
@@ -11,7 +11,7 @@ public class SalaCofre extends SalaJogoDemo {
     private boolean escuro;
     
 	public SalaCofre() {
-		super("SalaCofre");
+		super("SalaCofre", "0");
 	    escuro = true;
 		Cofre cofre = new Cofre();
 		Picareta picareta = new Picareta();
@@ -22,7 +22,7 @@ public class SalaCofre extends SalaJogoDemo {
 	@Override
 	public String textoDescricao() {
 		StringBuilder descricao = new StringBuilder();
-		descricao.append("Voce esta na ").append(this.getNome()).append("\n");
+		descricao.append("Você está na ").append(this.getNome()).append("\n");
 		if (escuro) {
 			descricao.append("Esta escuro aqui ...");
 		}else {
@@ -40,7 +40,7 @@ public class SalaCofre extends SalaJogoDemo {
 		if (f == null) {
 			return false;
 		}
-		if (f instanceof Lanterna) {
+		if (f instanceof Luminaria) {
 		    escuro = false;
 		    return true;
 		}

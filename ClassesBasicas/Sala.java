@@ -15,15 +15,19 @@ public abstract class Sala {
 	public Sala(String nome) {
 		this.nome = nome;
 		objetos = new HashMap<>();
-		ferramentas = new HashMap();
-		portas = new HashMap();
+		ferramentas = new HashMap<>();
+		portas = new HashMap<>();
 	}
 	
 	public Sala(String nome,String repVisual) {
 		this(nome);
 		this.repVisual = repVisual;
 	}
-
+	
+	public void setRepVisual(String val) {
+		repVisual = val;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
